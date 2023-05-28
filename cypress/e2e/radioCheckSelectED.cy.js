@@ -1,13 +1,11 @@
 /// <reference types="Cypress" />
 
-
 describe('verify the functionality of checkbox,radioButton,select Drop Down', function () {
 
     beforeEach(function () {
         cy.visit('http://www.webdriveruniversity.com/Dropdown-Checkboxes-RadioButtons/index.html')
 
     })
-
 
     it('verify functionality for radio button', function () {
         // basic
@@ -24,8 +22,7 @@ describe('verify the functionality of checkbox,radioButton,select Drop Down', fu
 
     
 
-    it.only('verify functionality for checkbox', function () {
-
+    it('verify functionality for checkbox', function () {
         //checkbox-1 ---- tick  ----- click ()
         //checkbox-1 -----tick  ----- check()
         //checkbox-1 -----tick  ----- uncheck()
@@ -49,18 +46,36 @@ describe('verify the functionality of checkbox,radioButton,select Drop Down', fu
         //     cy.wrap(el).uncheck().should('not.be.checked')
         // })
 
-        // cy.get('input[type= "checkbox"]').each(function(el,index){
-        //     if(index != 2){
-        //         cy.wrap(el).click().should('be.checked')
-        //         cy.wrap(el).click().should('not.be.checked')
-        //     }
-        // })
+        cy.get('input[type= "checkbox"]').each(function(el,index){
+            if(index != 2){
+                cy.wrap(el).click().should('be.checked')
+                cy.wrap(el).click().should('not.be.checked')
+            }
+        })
+        // selected , enabled , disabled , visible , exist
+    })
 
-
-
+    it('enabled disabled selected exist visible', function () {
+        cy.get("input[value='cabbage']").should('be.disabled')
+        cy.get("input[value='lettuce']").should('be.enabled')
+        cy.get("input[value='pumpkin']").should('to.be.checked')
+        cy.get('#fruit-selects').should('exist')
 
     })
 
+    it('verify the select drop down in cypress', function () {
+        // cy.get('#dropdowm-menu-1').select('python')
+        //cy.get('#dropdowm-menu-1').select('Python')
+        let arr = ['python','testng','javascript']
+        cy.get('.section-title').first().children().each(function(el,index){
+            cy.wrap(el).select(arr[index]).should('have.value',arr[index])  
+        })
+    })
+
+
+    it.only('verify the select drop down in cypress', function () {
+      cy.url().should('contain','Dropdown-Checkboxes-RadioButton')
+    })
 
 
 
