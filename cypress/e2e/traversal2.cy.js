@@ -99,7 +99,6 @@ describe('traversal method in cypress', function () {
     })
 
     
-
     it.only('To get all of the next sibling DOM elements within elements until another element, use the .nextUntil() command.', function () {
         cy.visit('http://www.webdriveruniversity.com/Data-Table/index.html')
         cy.get('#fruits').nextUntil('#veggie').should('have.length',5)
@@ -111,22 +110,6 @@ describe('traversal method in cypress', function () {
         cy.get('#veggie').prevUntil('#fruits').should('have.length',5)
         
     })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
