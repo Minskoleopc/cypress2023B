@@ -32,7 +32,7 @@ describe('verfify the api', function () {
             })
     })
 
-    it.only('verify the post request', function () {
+    it('verify the post request', function () {
 
         let payload = {
             name: "chinmay",
@@ -63,11 +63,41 @@ describe('verfify the api', function () {
 
         // reponse
 
+        let payload = {
+            name: "morpheus",
+            job: "zion resident"
+        }
+
+        cy.request({
+            method:"PUT",
+            url:"https://reqres.in/api/users/2",
+            body:payload
+        }).then(function(response){
+            cy.log(response)
+            expect(response.duration).to.be.lessThan(400)
+            expect(response.body).to.have.keys(["job","name","updatedAt"])
+            expect(response.body).to.have.property('job',payload.job)
+            expect(response.body).to.have.property('name',payload.name)
+            expect(response.status).to.eq(200)
+        })
+
+
+
+
 
     })
     it('verify the update request', function () {
 
         // status
+        cy.request({
+            method:"DELETE",
+            url:"https://reqres.in/api/users/2",
+           
+        }).then(function(response){
+            expect(response.status).to.eq(204)
+        })
+
+
 
     })
 
