@@ -53,7 +53,7 @@ describe('verify e2e flow', function () {
                                 Authorization: `Bearer ${tokenV}`
                             }
 
-                        }).then(function(response){
+                        }).then(function (response) {
                             expect(response.status).to.eq(204)
 
                         })
