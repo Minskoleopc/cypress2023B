@@ -1,5 +1,6 @@
 {
-  "username": "Admin",
-  "password": "admin123"
+  "firstName": "ram",
+  "lastName": "dani",
+  "email": "ramdani010@gmail.com",
+  "message": "I am learning js"
 }
-
